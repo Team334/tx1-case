@@ -1,5 +1,5 @@
 // our font
-use </Users/August/Downloads/Richardson_Brand_Accelerator/Richardson_Brand_Accelerator.otf>;
+use <Richardson_Brand_Accelerator.otf>;
 
 module hc_column(length, cell_size, wall_thickness) { 
     no_of_cells = floor(length / (cell_size + wall_thickness)) ; 
