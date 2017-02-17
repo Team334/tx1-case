@@ -1,12 +1,32 @@
 // our font
 use <Richardson_Brand_Accelerator.otf>;
 
+module hex_smooth(r, roundness) {
+    hull() {
+        f=40;
+        translate([r*0.5, r*sqrt(3)/2])
+            circle(roundness, $fn=f);
+        translate([r, 0])
+            circle(roundness, $fn=f);
+        translate([r*(-0.5), r*sqrt(3)/2])
+            circle(roundness, $fn=f);
+        translate([-r, 0])
+            circle(roundness, $fn=f);
+        translate([r*(-0.5), -r*sqrt(3)/2])
+            circle(roundness, $fn=f);
+        translate([r*0.5, -r*sqrt(3)/2])
+            circle(roundness, $fn=f);
+    }
+}
+
+
 module hc_column(length, cell_size, wall_thickness) { 
     no_of_cells = floor(length / (cell_size + wall_thickness)) ; 
 
     for (i = [0 : no_of_cells]) { 
         translate([0,(i * (cell_size + wall_thickness)),0]) 
-        circle($fn = 6, r = cell_size * (sqrt(3)/3)); 
+        //circle($fn = 6, r = cell_size * (sqrt(3)/3)); 
+        hex_smooth(cell_size * (sqrt(3)/3) * 0.7, 0.05);
     } 
 } 
 
